@@ -1,6 +1,7 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import './login.css';
+
 function Login() {
     return (
         <div className='background'>

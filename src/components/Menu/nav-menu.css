@@ -1,0 +1,14 @@
+.navbar-placement {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+}
+
+.brand-spacing {
+    letter-spacing: -1px;
+}
+
+.nav-menu {
+    line-height: 180%;
+    font-size: 1.4em;
+}
