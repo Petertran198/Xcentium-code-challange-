@@ -1,0 +1,20 @@
+.form-size {
+    width: 45%;
+    height: 45%;
+    min-width: 400px;
+    min-height: 250px;
+}
+
+.background {
+    background: linear-gradient(130deg, #fff 50%, #025e73 0 100%);
+}
+
+.submit-btn {
+    cursor: pointer;
+    transition: all 0.4s;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.submit-btn:hover {
+    opacity: 0.8;
+}

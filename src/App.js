@@ -1,7 +1,9 @@
+import Login from './components/Login/Login';
+import './app.css';
 function App() {
     return (
         <>
-            <button className='btn btn-primary'>Hello</button>
+            <Login />
         </>
     );
 }

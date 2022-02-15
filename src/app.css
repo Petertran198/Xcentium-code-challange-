@@ -1,0 +1,15 @@
+* {
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+.header-font {
+    font-family: 'Merriweather', serif;
+}
+
+.text-font {
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+.p-relative {
+    position: relative;
+}
