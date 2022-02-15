@@ -1,11 +1,18 @@
 import Login from './components/Login/Login';
 import './app.css';
-import XCentiumNavbar from './components/Menu/NavMenu';
+import { Switch } from 'react-router-dom';
+import PublicRoutes from './components/routes/PublicRoutes';
 function App() {
     return (
         <>
-            <XCentiumNavbar />
-            <Login />
+            <Switch>
+                <PublicRoutes
+                    restricted={true}
+                    exact
+                    path='/login'
+                    component={Login}
+                />
+            </Switch>
         </>
     );
 }
