@@ -7,10 +7,25 @@ const initialState = {
 export const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {},
+    reducers: {
+        signInUser: (state, action) => {
+            const userIndex = action.payload.accounts.findIndex((account) => {
+                return (
+                    account.Username === action.payload.username &&
+                    account.Password === action.payload.password
+                );
+            });
+            if (userIndex != -1) {
+                state.userInfo = action.payload.accounts[userIndex];
+            } else {
+                state.userInfo = null;
+            }
+        },
+    },
 });
 
 // Action creators are generated for each case reducer function
-export const {} = userSlice.actions;
+export const { signInUser } = userSlice.actions;
+export const getUserInfo = (state) => state.user.userInfo;
 
 export default userSlice.reducer;
