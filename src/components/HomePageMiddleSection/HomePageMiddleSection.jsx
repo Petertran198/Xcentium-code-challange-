@@ -11,7 +11,7 @@ function HomePageMiddleSection() {
                     <div className='col-md-7 col-sm-12 d-flex align-items-center vh-100'>
                         <div>
                             <h1 className='header-font my-3 display-4'>
-                                Why XCentium
+                                Why XCentiuum
                             </h1>
                             <p className='lead'>
                                 We are a collective of truly dedicated people with

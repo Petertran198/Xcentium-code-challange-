@@ -18,7 +18,7 @@ function Footer() {
                         >
                             <Navbar.Brand>
                                 <FontAwesomeIcon icon={faXmark} />
-                                <span className='header-font'>Centium</span>
+                                <span className='header-font'>Centiuum</span>
                             </Navbar.Brand>
                         </Link>
                         <hr className='small-hr' />
@@ -26,12 +26,13 @@ function Footer() {
                     <p className='footer-last-words lead'>
                         Where Design meets Innovation
                     </p>
-                    <Link
-                        to='https://github.com/Petertran198'
+                    <a
+                        target='_blank'
+                        href='https://github.com/Petertran198'
                         className='text-decoration-none footer-font-styling'
                     >
                         Created by: Peter Tran | © 2022 Copyright
-                    </Link>
+                    </a>
                 </div>
             </footer>
         </div>

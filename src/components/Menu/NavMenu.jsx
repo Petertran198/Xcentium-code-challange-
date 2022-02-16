@@ -13,7 +13,7 @@ function NavMenu() {
                         <Navbar.Brand className='text-white'>
                             <FontAwesomeIcon icon={faXmark} />
                             <span className='header-font brand-spacing'>
-                                Centium
+                                Centiuuum
                             </span>
                         </Navbar.Brand>
                     </Link>
