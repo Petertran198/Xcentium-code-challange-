@@ -1,8 +1,7 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faHouse } from '@fortawesome/free-solid-svg-icons';
-
 import './nav-menu.css';
 import { Link } from 'react-router-dom';
 function NavMenu() {

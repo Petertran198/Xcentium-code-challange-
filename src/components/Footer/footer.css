@@ -1,0 +1,14 @@
+.text-decoration-none {
+    text-decoration: none;
+}
+
+.footer-font-styling {
+    color: #002227;
+}
+
+.small-hr {
+    width: 45%;
+    color: #002227;
+    background-color: #002227;
+    height: 0.01em;
+}
