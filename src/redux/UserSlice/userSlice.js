@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    userInfo: null,
+    userInfo: JSON.parse(window.localStorage.getItem('user')) || null,
 };
 
 export const userSlice = createSlice({
@@ -17,8 +17,13 @@ export const userSlice = createSlice({
             });
             if (userIndex != -1) {
                 state.userInfo = action.payload.accounts[userIndex];
-            } else {
-                state.userInfo = null;
+                window.localStorage.setItem(
+                    'user',
+                    JSON.stringify({
+                        Username: state.userInfo.Username,
+                        Name: state.userInfo.Name,
+                    })
+                );
             }
         },
     },

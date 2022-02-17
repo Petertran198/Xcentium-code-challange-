@@ -1,10 +1,13 @@
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark, faHouse } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faHouse, faUser } from '@fortawesome/free-solid-svg-icons';
 import './nav-menu.css';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getUserInfo } from '../../redux/UserSlice/userSlice';
 function NavMenu() {
+    const user = useSelector(getUserInfo);
     return (
         <div className='navbar-placement'>
             <Navbar expand='lg' className='nav-menu'>
@@ -13,23 +16,22 @@ function NavMenu() {
                         <Navbar.Brand className='text-white'>
                             <FontAwesomeIcon icon={faXmark} />
                             <span className='header-font brand-spacing'>
-                                Centiuuum
+                                Centiuum
                             </span>
                         </Navbar.Brand>
                     </Link>
-                    <Navbar.Toggle aria-controls='basic-navbar-nav' />
-                    <Navbar.Collapse id='basic-navbar-nav'>
-                        <Nav className='ml-auto '>
-                            <Link to='./'>
-                                <Nav.Link href='#home' className='text-white'>
-                                    <FontAwesomeIcon
-                                        icon={faHouse}
-                                        border='secondary'
-                                    />
-                                </Nav.Link>
-                            </Link>
-                        </Nav>
-                    </Navbar.Collapse>
+
+                    <Nav className='ml-auto '>
+                        {user && (
+                            <>
+                                <FontAwesomeIcon
+                                    icon={faUser}
+                                    className=' m-2 my-auto text-light'
+                                />
+                                <span className='text-light'> {user.Name}</span>
+                            </>
+                        )}
+                    </Nav>
                 </Container>
             </Navbar>
         </div>

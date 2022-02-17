@@ -1,23 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { signInUser, getUserInfo } from '../../redux/UserSlice/userSlice';
+import { getUserInfo, signInUser } from '../../redux/UserSlice/userSlice';
 import './login.css';
 import Papa from 'papaparse';
-import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Login() {
     const userNameRef = useRef();
     const passwordRef = useRef();
     const dispatch = useDispatch();
-    const user = useSelector(getUserInfo);
     const history = useHistory();
-    useEffect(() => {
-        if (user != null) {
-            history.push('./');
-        }
-    }, [user]);
 
     const getCsvData = async () => {
         try {
@@ -38,7 +32,6 @@ function Login() {
         e.preventDefault();
         try {
             const csvResults = await getCsvData();
-            console.log(csvResults, '----');
             dispatch(
                 signInUser({
                     accounts: csvResults,
@@ -46,6 +39,7 @@ function Login() {
                     password: passwordRef.current.value,
                 })
             );
+            history.push('./');
         } catch (error) {
             console.error(error.message);
         }
@@ -53,7 +47,7 @@ function Login() {
 
     return (
         <div className='background'>
-            <div class='container d-flex justify-content-center align-items-center vh-100'>
+            <div className='container d-flex justify-content-center align-items-center vh-100'>
                 <Form
                     className='form-size border rounded p-3 p-relative'
                     onSubmit={(e) => handleSubmit(e)}
@@ -76,7 +70,6 @@ function Login() {
                             placeholder='Password'
                         />
                     </Form.Group>
-
                     <button
                         type='submit'
                         className='btn text-light submit-btn btn-block my-5 border'
