@@ -1,38 +1,26 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { signInUser } from '../../redux/UserSlice/userSlice';
 import './login.css';
-import Papa from 'papaparse';
+// import Papa from 'papaparse';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import useCsvData from '../../hooks/useCsvData';
 function Login() {
     const userNameRef = useRef();
     const passwordRef = useRef();
     const dispatch = useDispatch();
     const history = useHistory();
+    const [isBtnDisabled, setIsBtnDisabled] = useState(false);
+    const csvResults = useCsvData('/data/logindata.csv');
 
-    const getCsvData = async () => {
-        try {
-            const response = await fetch('/data/logindata.csv');
-            const reader = response.body.getReader();
-            const result = await reader.read(); // raw array
-            const decoder = new TextDecoder('utf-8');
-            const csv = decoder.decode(result.value); // the csv text
-            const results = Papa.parse(csv, { header: true }); // object with { data, errors, meta }
-            const rows = results.data; // array of userInfo
-            return rows;
-        } catch (error) {
-            console.error(error.message);
-        }
-    };
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+        //To prevent mass clicking and slow down the application
+        setIsBtnDisabled(true);
         try {
-            const csvResults = await getCsvData();
             dispatch(
                 signInUser({
                     accounts: csvResults,
@@ -42,7 +30,6 @@ function Login() {
             );
             history.push('./');
         } catch (error) {
-            console.error(error);
             toast.error('Account was not found.', {
                 position: 'top-center',
                 autoClose: 1500,
@@ -52,6 +39,7 @@ function Login() {
                 draggable: true,
                 progress: undefined,
             });
+            setIsBtnDisabled(false);
         }
     };
 
@@ -59,7 +47,7 @@ function Login() {
         <div className='background'>
             <ToastContainer
                 position='top-center'
-                autoClose={2500}
+                autoClose={1500}
                 hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick
@@ -94,6 +82,7 @@ function Login() {
                     <button
                         type='submit'
                         className='btn text-light submit-btn btn-block my-5 border'
+                        disabled={isBtnDisabled}
                     >
                         Log In
                     </button>
