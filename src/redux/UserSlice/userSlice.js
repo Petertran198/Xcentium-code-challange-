@@ -15,7 +15,7 @@ export const userSlice = createSlice({
                     account.Password === action.payload.password
                 );
             });
-            if (userIndex != -1) {
+            if (userIndex !== -1) {
                 state.userInfo = action.payload.accounts[userIndex];
                 window.localStorage.setItem(
                     'user',
@@ -24,6 +24,8 @@ export const userSlice = createSlice({
                         Name: state.userInfo.Name,
                     })
                 );
+            } else {
+                throw 'Account was not found.';
             }
         },
         signOutUser: (state) => {

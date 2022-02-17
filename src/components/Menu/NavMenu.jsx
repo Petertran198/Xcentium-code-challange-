@@ -15,7 +15,7 @@ function NavMenu() {
             <Navbar expand='lg' className='nav-menu'>
                 <Container>
                     <Link to='./'>
-                        <Navbar.Brand className='text-white'>
+                        <Navbar.Brand className={user ? 'text-light' : 'text-dark'}>
                             <FontAwesomeIcon icon={faXmark} />
                             <span className='header-font brand-spacing'>
                                 Centiuum

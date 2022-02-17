@@ -8,9 +8,9 @@ function Footer() {
     return (
         <div>
             {' '}
-            <footer class='page-footer font-small blue pt-4'>
-                <div class='footer-copyright text-center py-3'>
-                    <h5 class='text-uppercase'>
+            <footer className='page-footer font-small blue pt-4'>
+                <div className='footer-copyright text-center py-3'>
+                    <h5 className='text-uppercase'>
                         {' '}
                         <Link
                             to='./'

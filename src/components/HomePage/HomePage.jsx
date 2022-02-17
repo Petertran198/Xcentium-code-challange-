@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import HeroBanner from '../HeroBanner/HeroBanner';
 import './home-page.css';
 import HomePageMiddleSection from '../HomePageMiddleSection/HomePageMiddleSection';

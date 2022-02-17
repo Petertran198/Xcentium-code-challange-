@@ -1,11 +1,12 @@
 import React, { useRef } from 'react';
 import { Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { getUserInfo, signInUser } from '../../redux/UserSlice/userSlice';
+import { signInUser } from '../../redux/UserSlice/userSlice';
 import './login.css';
 import Papa from 'papaparse';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
     const userNameRef = useRef();
@@ -41,12 +42,33 @@ function Login() {
             );
             history.push('./');
         } catch (error) {
-            console.error(error.message);
+            console.error(error);
+            toast.error('Account was not found.', {
+                position: 'top-center',
+                autoClose: 1500,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     };
 
     return (
         <div className='background'>
+            <ToastContainer
+                position='top-center'
+                autoClose={2500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+
             <div className='container d-flex justify-content-center align-items-center vh-100'>
                 <Form
                     className='form-size border rounded p-3 p-relative'
@@ -61,7 +83,6 @@ function Login() {
                             required
                         />
                     </Form.Group>
-
                     <Form.Group className='m-1 my-2 form-input'>
                         <Form.Control
                             type='password'
