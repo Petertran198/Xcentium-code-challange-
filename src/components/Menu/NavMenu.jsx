@@ -29,6 +29,9 @@ function NavMenu() {
                                     className=' m-2 my-auto text-light'
                                 />
                                 <span className='text-light'> {user.Name}</span>
+                                <Link className='btn btn-outline-danger logout-btn'>
+                                    Log Out
+                                </Link>
                             </>
                         )}
                     </Nav>
