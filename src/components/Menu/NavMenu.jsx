@@ -1,13 +1,15 @@
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark, faHouse, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faUser } from '@fortawesome/free-solid-svg-icons';
 import './nav-menu.css';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getUserInfo } from '../../redux/UserSlice/userSlice';
+import { getUserInfo, signOutUser } from '../../redux/UserSlice/userSlice';
+import { useDispatch } from 'react-redux';
 function NavMenu() {
     const user = useSelector(getUserInfo);
+    const dispatch = useDispatch();
     return (
         <div className='navbar-placement'>
             <Navbar expand='lg' className='nav-menu'>
@@ -29,9 +31,12 @@ function NavMenu() {
                                     className=' m-2 my-auto text-light'
                                 />
                                 <span className='text-light'> {user.Name}</span>
-                                <Link className='btn btn-outline-danger logout-btn'>
+                                <button
+                                    className='btn btn-sm btn-outline-danger logout-btn'
+                                    onClick={() => dispatch(signOutUser())}
+                                >
                                     Log Out
-                                </Link>
+                                </button>
                             </>
                         )}
                     </Nav>

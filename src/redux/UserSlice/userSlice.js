@@ -26,11 +26,15 @@ export const userSlice = createSlice({
                 );
             }
         },
+        signOutUser: (state) => {
+            state.userInfo = null;
+            window.localStorage.setItem('user', null);
+        },
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { signInUser } = userSlice.actions;
+export const { signInUser, signOutUser } = userSlice.actions;
 export const getUserInfo = (state) => state.user.userInfo;
 
 export default userSlice.reducer;
